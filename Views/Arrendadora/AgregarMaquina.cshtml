@@ -1,0 +1,56 @@
+﻿@model System.Data.DataTable;
+@{
+    ViewData["Title"] = "Agregar Maquina";
+}
+<body>
+    <div class="jumbotron">
+        <h1 class="text-center"> @ViewData["Title"] </h1>
+        <div>
+            <form action="../../Controllers/ArrendadoraMaquina.php" id="formulario" name="formulario" method="POST">
+                <table class="table table-bordered">
+                    <thead class="thread-light">
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Número de serie</th>
+                            <th>Marca</th>
+                            <th>Tipo</th>
+                            <th>Capacidad</th>
+                            <th>Estado</th>
+                            <th>Combustible</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> <input type="text" class="contenido" name="modelo"> </td>
+                            <td> <input type="text" class="contenido" name="num_serie"> </td>
+                            <td> <input type="text" class="contenido" name="marca"> </td>
+                            <td> <input type="text" class="contenido" name="tipo"> </td>
+                            <td> <input type="text" class="contenido" name="capacidad"> </td>
+                            <td> <input type="text" class="contenido" name="estado"/></td>
+                            <td> <input type="text" class="contenido" name="combustible" /></td>
+                            <td> <input type="text" class="contenido" name="stock" /></td>
+                        </tr>
+                    </tbody>
+                    <input type="button" class="btn" name="agregar" value="Agregar Maquina" onclick="agregarMaquina('?'+'modelo='+modelo.value+'&'+'num_serie='+num_serie.value+'&'+'marca='+marca.value+'&'+'tipo='+tipo.value+'&'+'nombre='+nombre.value+'&'+'capacidad='+capacidad.value+'&'+'estado='+estado.value+'&'+'combustible='+combustible.value+'&'+'stock='+stock.value)">
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+    
+@section Scripts {
+    <script>
+        function agregarMaquina() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "../../Controllers/ArrendadoraMaquina.php", true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+}

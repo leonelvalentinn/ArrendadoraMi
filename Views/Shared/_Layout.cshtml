@@ -1,0 +1,193 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@{
+    //Agregamos esta libreria para usar las autorizaciones y denegar el acceso a los menus del layout compartido
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ArrendadoraM</title>
+    <link rel="shortcut icon" href="~/Resources/favicon.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ArrendadoraM.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style rel="stylesheet">
+        p {
+            font-size: x-small;
+            line-height: 5px;
+        }
+        h6{
+            font-size: small;
+        }
+    </style>
+    @await RenderSectionAsync("Styless", required: false)
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <img class="navbarimg" src="https://irp.cdn-website.com/a83daae7/DESKTOP/png/764.png">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="ms-auto d-sm-inline-flex justify-content-between mx-auto">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Arrendadora" asp-action="Servicios">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Arrendadora" asp-action="Maquinaria">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Arrendadora" asp-action="Contacto">Contacto</a>
+                        </li>
+                        @if (User.IsInRole("1") || User.IsInRole("2")) { //Se utiliza un iff para verificar que seas un usuario el cual puede tener acceso a estos menus si no te los restringe
+                            <li class="nav-item justify-content-end">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Arrendadora" asp-action="Index">Usuario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Acceso" asp-action="Salir">Salir</a>
+                            </li>
+                        } else {
+                            <li class="a">
+                                <a class="nav-link text-dark float-right" asp-area="" asp-controller="Acceso" asp-action="Index">Iniciar sesión</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                @if(User.IsInRole("1") || User.IsInRole("2")){
+                    <p class="text-align: right;">Usuario Registrado</p>
+                } else {
+                    <a class="tel" href="http://wa.link/ggv0r5" target="_blank"> <img class="w" src="https://icones.pro/wp-content/uploads/2021/02/icone-du-logo-whatsapp-vert.png"> 5514476309</a>
+                }
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-white text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 link-secondary">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="bi bi-buildings-fill"></i>Arrendadora Mifra
+          </h6>
+          <img class="f" src="https://coca-colafemsa.com/wp-content/uploads/2019/11/05-ESR-B.png">
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Soluciones
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Maquinaria</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Renta o Venta</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Acerca de nosotros
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Nosotros</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Nuestra historia</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Sucursal</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Aviso de privacidad</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Empresa socialmente responsable</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
+          <p><i class="bi bi-house-door-fill"></i></i> New York, NY 10012, US</p>
+          <p>
+            <i class="bi bi-envelope-fill"></i>
+            arrendadoramifra50@gmail.com
+          </p>
+          <p><i class="bi bi-telephone-fill"></i> 5514476309</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scriptss", required: false)
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

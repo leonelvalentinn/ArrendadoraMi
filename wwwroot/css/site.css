@@ -1,0 +1,92 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.ab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+img.w {
+  height: 30px;
+  width: 30px;
+}
+
+img.f{
+  height: 100px;
+  width: 180px;
+}
+
+a.tel{
+  color: #258cfb;
+  text-decoration: none;
+  text-align: right;
+}
+
+.navbarimg{
+  height: 60px;
+  width: 130px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+li.a {
+  position: relative;
+  right: auto;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.foot {
+  display: grid; 
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  background-color: white;
+  box-sizing: content-box;
+  width: 200px;
+  color: gray;
+  font-size: xx-small;
+}
+
+a.text-reset {
+  text-decoration: none;
+}
+
+footer {
+  position: bottom;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+
+.bod {
+  background-size: 700px 650px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.label {
+  font-size: medium;
+  font-stretch: condensed;
+  color: white;
+}

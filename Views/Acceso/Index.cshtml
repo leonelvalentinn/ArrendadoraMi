@@ -1,0 +1,37 @@
+﻿@model ArrendadoraM.Models.Usuarios;
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="Resources/favicon.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Index</title>
+</head>
+<body class="bod" background="https://img.interempresas.net/fotos/3025303.jpeg">
+ <br><br><br>
+    <div class="">
+       
+    <div class="row mt-5">
+        <div class="col-sm-4 offset-sm-4">
+            <form asp-controller="Acceso" asp-action="Index" method="post">
+                <div class="mb-3">
+                    <label asp-for="Usuario" class="form-label label">Email</label>
+                    <input asp-for="Usuario" type="email" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Contrasena" class="form-label label">Contraseña</label>
+                    <input asp-for="Contrasena" type="password" class="form-control">
+                </div>
+              <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+        <br><br><br><br><br><br>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

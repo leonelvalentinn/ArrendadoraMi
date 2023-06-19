@@ -1,0 +1,57 @@
+@model System.Data.DataTable;
+@{ViewData["Title"] = "Lista de maquinas";}
+@section Styles {
+	<link href="~/lib/datatables.net-bs5/datatables.bootstrap5.min.css" rel="stylesheet" />
+}
+<meta>
+<head>
+
+</head>
+<body>
+<div class="jumbotron">
+    <h1 class="text-center"> @ViewData["Title"] </h1>
+    <div>
+        <table class="table table-bordered" id="myTable">
+            <thead class="thread-light">
+                <tr>
+                    <th>Modelo</th>
+                    <th>Número de serie</th>
+                    <th>Marca</th>
+                    <th>Tipo</th>
+                    <th>Capacidad</th>
+                    <th>Estado</th>
+                    <th>Combustible</th>
+                    <th>Stock</th>
+                    <th><a asp-action="Formulario">Agregar Maquina</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(int i=0;i<Model.Rows.Count;i++){
+                    <tr>
+                        <td>@Model.Rows[i]["Modelo"]</td>
+                        <td>@Model.Rows[i]["Num_Serie"]</td>
+                        <td>@Model.Rows[i]["Marca"]</td>
+                        <td>@Model.Rows[i]["Tipo"]</td>
+                        <td>@Model.Rows[i]["Capacidad"]</td>
+                        <td>@Model.Rows[i]["Estado"]</td>
+                        <td>@Model.Rows[i]["Combustible"]</td>
+                        <td>@Model.Rows[i]["Stock"]</td>
+                        <td><a asp-action="Eliminar" asp-route-id='@Model.Rows[i]["ID_Maquinaria"]'>Eliminar</a> | 
+                        <a asp-action="Formulario" asp-route-id='@Model.Rows[i]["ID_Maquinaria"]'>Editar</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+@section Scripts {
+	<script src="~/lib/datatables.net/jquery.datatables.min.js"></script>
+	<script src="~/lib/datatables.net-bs5/datatables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
